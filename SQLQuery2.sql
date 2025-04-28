@@ -1,0 +1,10 @@
+RESTORE DATABASE LBMS
+FROM DISK = 'C:\Users\Dell\LBMS.bak',DISK = 'C:\Users\Dell\LBMS2.bak'
+WITH FILE = 1,
+MOVE 'LBMS' TO 'C:\Users\Dell\LBMS.mdf',
+MOVE 'LBMS' TO 'C:\Users\Dell\LBMS_log.ldf',
+NOUNLOAD, STATS = 10
+
+
+RESTORE FILELISTONLY
+FROM DISK = 'C:\Users\Dell\LBMS.bak'
