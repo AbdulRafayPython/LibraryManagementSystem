@@ -1,0 +1,52 @@
+﻿@model Library_Management_System.Models.FinePolicy
+
+@{
+    ViewBag.Title = "Fine Policy Details > Policies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Add Fine Policy</h6>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            <div class="form-horizontal">
+                <h4>Fine Policy Details</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.MaxDays)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.MaxDays)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FineAmount)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FineAmount)
+                    </dd>
+
+                    <dt>
+                        Member Type Name
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.MemberType.UserTypeName)
+                    </dd>
+
+                </dl>
+            </div>
+        }
+        </div>
+    </div>
+
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.FinePolicyID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>

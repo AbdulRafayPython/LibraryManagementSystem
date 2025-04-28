@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Library_Management_System.Models.BookPublisher>
+
+@{
+    ViewBag.Title = "All Publishers > Book Configuration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.ActionLink("Add New Publisher", "Create", null, new { @class = "btn btn-success" })
+
+<hr>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Publisher List</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Publisher ID</th>
+                        <th>Publisher Name</th>
+                        <th>Publication Language</th>
+                        <th>Publication Type</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PublisherID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PublisherName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PublicationLanguage)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PublicationType)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.PublisherID }, new { @class = "btn btn-success" })
+                                @Html.ActionLink("Details", "Details", new { id = item.PublisherID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.PublisherID }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Library_Management_System.Models.Member>
+
+@{
+    ViewBag.Title = "All Members > Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.ActionLink("Add New Member", "Create", null, new { @class = "btn btn-success" })
+
+<hr>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Member List</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.FName)</th>
+                        <th>@Html.DisplayNameFor(model => model.LName)</th>
+                        <th>@Html.DisplayNameFor(model => model.City)</th>
+                        <th>@Html.DisplayNameFor(model => model.MobileNo)</th>
+                        <th>@Html.DisplayNameFor(model => model.EmailID)</th>
+                        <th>@Html.DisplayNameFor(model => model.DOB)</th>
+                        <th>User Type</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.FName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.LName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.City)</td>
+                            <td>@Html.DisplayFor(modelItem => item.MobileNo)</td>
+                            <td>@Html.DisplayFor(modelItem => item.EmailID)</td>
+                            <td>@Html.DisplayFor(modelItem => item.DOB)</td>
+                            <td>@Html.DisplayFor(modelItem => item.MemberType.UserTypeName)</td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.MemID }, new { @class = "btn btn-success" })
+                                @Html.ActionLink("Details", "Details", new { id = item.MemID }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.MemID }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
